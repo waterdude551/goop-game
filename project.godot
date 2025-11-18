@@ -11,5 +11,6 @@ config_version=5
 [application]
 
 config/name="goopGame"
+run/main_scene="uid://btte1mnqgivl8"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/sprites/icon.svg"
