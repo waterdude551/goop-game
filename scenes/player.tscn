@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://2wkd4xllpswy"]
+[gd_scene load_steps=9 format=3 uid="uid://2wkd4xllpswy"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_soynw"]
 [ext_resource type="Texture2D" uid="uid://bnof1stywof4k" path="res://assets/sprites/janitorPLACEHOLDER.webp" id="2_vvv0m"]
@@ -26,6 +26,12 @@ adjustment_enabled = true
 [sub_resource type="CircleShape2D" id="CircleShape2D_im4b2"]
 radius = 45.6667
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xhd6u"]
+bg_color = Color(0, 0, 0, 0.784314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4agkm"]
+bg_color = Color(0, 0.6, 0.6, 0.784314)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_soynw")
@@ -49,6 +55,15 @@ environment = SubResource("Environment_uxfxc")
 position = Vector2(21, -27)
 scale = Vector2(3, 3)
 shape = SubResource("CircleShape2D_im4b2")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -64.0
+offset_top = -152.0
+offset_right = 113.0
+offset_bottom = -125.0
+theme_override_styles/background = SubResource("StyleBoxFlat_xhd6u")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4agkm")
+value = 100.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

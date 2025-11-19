@@ -5,12 +5,18 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 @onready var player: Node2D = null
 @onready var game: Node2D = null
+@onready var goop: Node2D = null
 var color
 var colliding := false
 var canPop := false
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var attack = $Attack
 @onready var nav_agent = $NavigationAgent2D
+var goop_path = preload("res://scenes/goop.tscn")
+
+@onready var spawner = $Spawner
+
+@export var damage = 10
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -26,6 +32,8 @@ func _ready():
 func _physics_process(delta):
 	if player == null:
 		_ready()
+	if spawner.is_stopped():
+		spawn_goop()
 	# Add the gravity.
 	#if not is_on_floor():
 		#velocity.y += gravity * delta
@@ -33,6 +41,9 @@ func _physics_process(delta):
 	# Handle jump.
 	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		#velocity.y = JUMP_VELOCITY
+	if colliding == true && attack.is_stopped():
+		player.hp -= damage
+		attack.start()
 	
 	var current_position: Vector2 = self.global_transform.origin
 	var next_path_position: Vector2 = nav_agent.get_next_path_position()
@@ -46,8 +57,8 @@ func _physics_process(delta):
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"):
 		colliding = true
-		if body.color != color:
-			attack.start()
+		player.hp -= damage
+		attack.start()
 
 
 
@@ -75,3 +86,9 @@ func update_target_position(target_pos: Vector2):
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	velocity = velocity.move_toward(safe_velocity * SPEED, 12.0)
 	move_and_slide()
+	
+func spawn_goop():
+	goop = goop_path.instantiate()
+	goop.global_position = global_position
+	get_parent().add_child(goop)
+	spawner.start()

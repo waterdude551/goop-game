@@ -8,6 +8,8 @@ var color = 1
 @onready var game: Node2D = null
 @onready var collision_shape_2d = $CollisionShape2D
 var enemies := []
+@export var hp = 100
+@onready var health_bar = $HealthBar
 
 
 
@@ -22,7 +24,8 @@ func _ready():
 func _physics_process(delta):
 	collision_shape_2d.disabled = false
 	dashing = false
-
+	health_bar.value = hp
+	animated_sprite_2d.scale = Vector2(.4, .4)
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var elevation = Input.get_axis("ui_up", "ui_down")
@@ -39,17 +42,16 @@ func _physics_process(delta):
 	
 	
 	
-	if Input.is_action_just_pressed("ui_dash") and boosts > 0:
-		velocity *= 20
+	if Input.is_action_just_pressed("ui_dash"):
+		velocity *= 50
 		collision_shape_2d.disabled = true
 		for i in enemies:
 			i.queue_free()
 		dashing = true
 		if direction:
-			animated_sprite_2d.scale = Vector2(2, .5)
+			animated_sprite_2d.scale = Vector2(1, .2)
 		if elevation:
-			animated_sprite_2d.scale = Vector2(.5, 2)
-		boosts -= 1
+			animated_sprite_2d.scale = Vector2(.2, 1)
 		animated_sprite_2d.play("default")
 		
 	
