@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1kgetrl5cfv"]
+
+[ext_resource type="PackedScene" uid="uid://blxpyy2ynby8m" path="res://scenes/obstacle.tscn" id="1_bw3y7"]
+
+[node name="Arena" type="Area2D"]
+
+[node name="obstacle" parent="." instance=ExtResource("1_bw3y7")]
+position = Vector2(1381, 2160)
+scale = Vector2(5, 5)
+
+[node name="obstacle2" parent="." instance=ExtResource("1_bw3y7")]
+position = Vector2(3133, 739)
+scale = Vector2(10, 1)
+
+[node name="obstacle3" parent="." instance=ExtResource("1_bw3y7")]
+position = Vector2(4405, 2742)
+scale = Vector2(1, 10)

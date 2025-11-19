@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnnmbp8wjqacc"]
+
+[ext_resource type="PackedScene" uid="uid://2wkd4xllpswy" path="res://scenes/player.tscn" id="1_oturs"]
+[ext_resource type="PackedScene" uid="uid://11v7a8161040" path="res://scenes/enemy.tscn" id="2_t4pq5"]
+[ext_resource type="PackedScene" uid="uid://m861gmgwli6d" path="res://scenes/practice_arena.tscn" id="3_73olw"]
+
+[node name="HaroldScene" type="Node2D"]
+
+[node name="enemy" parent="." instance=ExtResource("2_t4pq5")]
+position = Vector2(551, 380)
+
+[node name="Player" parent="." instance=ExtResource("1_oturs")]
+position = Vector2(299, 139)
+
+[node name="Practice arena" parent="." instance=ExtResource("3_73olw")]
+position = Vector2(-56, -85)

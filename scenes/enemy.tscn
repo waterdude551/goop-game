@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://11v7a8161040"]
+
+[ext_resource type="Texture2D" uid="uid://cq55si5ncx60r" path="res://assets/sprites/slime.png" id="1_8akf5"]
+[ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="1_lgkee"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lju80"]
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8xoo0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8akf5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lju80")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3mqti"]
+radius = 44.0454
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u2lqy"]
+radius = 42.5
+
+[node name="enemy" type="CharacterBody2D" groups=["enemy"]]
+collision_mask = 3
+platform_floor_layers = 4294967293
+script = ExtResource("1_lgkee")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -3)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_8xoo0")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_3mqti")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 14)
+scale = Vector2(0.8, 0.8)
+shape = SubResource("CircleShape2D_u2lqy")
+
+[node name="Attack" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
