@@ -21,3 +21,4 @@ func read_input() -> void:
 	if (Input.is_key_pressed(KEY_D)):
 		move_input += Vector2(move_speed, 0)
 	pass
+##l

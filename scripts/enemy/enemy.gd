@@ -92,3 +92,4 @@ func spawn_goop():
 	goop.global_position = global_position
 	get_parent().add_child(goop)
 	spawner.start()
+##l
