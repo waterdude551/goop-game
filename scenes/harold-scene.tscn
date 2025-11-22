@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://btte1mnqgivl8"]
 
-[ext_resource type="Script" path="res://scripts/player/player_move.gd" id="1_pemxn"]
+[ext_resource type="Script" uid="uid://bir657dse2roi" path="res://scripts/player/player_move.gd" id="1_pemxn"]
 [ext_resource type="Texture2D" uid="uid://bnof1stywof4k" path="res://assets/sprites/janitorPLACEHOLDER.webp" id="2_lnika"]
-[ext_resource type="Script" path="res://scripts/player/player_aim_rotate.gd" id="3_lnika"]
+[ext_resource type="Script" uid="uid://c0q7oveskhcf5" path="res://scripts/player/player_aim_rotate.gd" id="3_lnika"]
 [ext_resource type="Texture2D" uid="uid://c6m4k530xcs6f" path="res://assets/sprites/icon.svg" id="4_61cku"]
 
 [node name="HaroldScene" type="Node2D"]
