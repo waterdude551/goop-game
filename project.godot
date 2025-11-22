@@ -11,7 +11,10 @@ config_version=5
 [application]
 
 config/name="goopGame"
+<<<<<<< Updated upstream
 run/main_scene="res://harold-scene.tscn"
+=======
+>>>>>>> Stashed changes
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://assets/sprites/icon.svg"
 
