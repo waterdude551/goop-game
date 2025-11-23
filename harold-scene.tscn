@@ -1,19 +1,29 @@
 [gd_scene load_steps=5 format=3 uid="uid://bnnmbp8wjqacc"]
 
-[ext_resource type="PackedScene" uid="uid://2wkd4xllpswy" path="res://scenes/player.tscn" id="1_oturs"]
-[ext_resource type="PackedScene" uid="uid://11v7a8161040" path="res://scenes/enemy.tscn" id="2_t4pq5"]
-[ext_resource type="PackedScene" uid="uid://m861gmgwli6d" path="res://scenes/practice_arena.tscn" id="3_73olw"]
-[ext_resource type="PackedScene" uid="uid://bbgw00ysmuwq1" path="res://scenes/enemy_spawner.tscn" id="4_uauvi"]
+[ext_resource type="Script" uid="uid://bir657dse2roi" path="res://scripts/player/player_move.gd" id="1_pemxn"]
+[ext_resource type="Texture2D" uid="uid://bnof1stywof4k" path="res://assets/sprites/janitorPLACEHOLDER.webp" id="2_lnika"]
+[ext_resource type="Script" uid="uid://c0q7oveskhcf5" path="res://scripts/player/player_aim_rotate.gd" id="3_lnika"]
+[ext_resource type="Texture2D" uid="uid://c6m4k530xcs6f" path="res://assets/sprites/icon.svg" id="4_61cku"]
 
 [node name="HaroldScene" type="Node2D"]
 
-[node name="Practice arena" parent="." instance=ExtResource("3_73olw")]
-position = Vector2(-56, -85)
+[node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="enemy" parent="." instance=ExtResource("2_t4pq5")]
-position = Vector2(551, 380)
+[node name="Player" type="Node2D" parent="."]
+script = ExtResource("1_pemxn")
+move_speed = 2.5
 
-[node name="Player" parent="." instance=ExtResource("1_oturs")]
-position = Vector2(299, 139)
+[node name="PlayerSprite" type="Sprite2D" parent="Player"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_lnika")
+offset = Vector2(-60, 60)
 
-[node name="EnemySpawner" parent="." instance=ExtResource("4_uauvi")]
+[node name="PlayerAimPivot" type="Node2D" parent="Player"]
+script = ExtResource("3_lnika")
+
+[node name="PlayerAim" type="Node2D" parent="Player/PlayerAimPivot"]
+position = Vector2(30, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/PlayerAimPivot/PlayerAim"]
+scale = Vector2(0.203125, 0.203125)
+texture = ExtResource("4_61cku")

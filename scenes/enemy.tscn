@@ -1,19 +1,31 @@
-[gd_scene load_steps=7 format=3 uid="uid://11v7a8161040"]
+[gd_scene load_steps=9 format=3 uid="uid://11v7a8161040"]
 
-[ext_resource type="Texture2D" uid="uid://cq55si5ncx60r" path="res://assets/sprites/slime.png" id="1_8akf5"]
-[ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="1_lgkee"]
+[ext_resource type="Script" uid="uid://ijnh6317l51j" path="res://scripts/enemy/enemy.gd" id="1_lgkee"]
+[ext_resource type="Texture2D" uid="uid://ctyfddqye0n5a" path="res://assets/sprites/New Piskel (3).png" id="2_md0e3"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lju80"]
-region = Rect2(0, 80, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ra3w"]
+atlas = ExtResource("2_md0e3")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
+atlas = ExtResource("2_md0e3")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4w8v"]
+atlas = ExtResource("2_md0e3")
+region = Rect2(0, 1024, 1024, 1024)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8xoo0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_8akf5")
+"texture": SubResource("AtlasTexture_4ra3w")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lju80")
+"texture": SubResource("AtlasTexture_5uy6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4w8v")
 }],
 "loop": true,
 "name": &"default",
@@ -33,8 +45,10 @@ script = ExtResource("1_lgkee")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -3)
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_8xoo0")
+autoplay = "default"
+frame_progress = 0.7403771
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0

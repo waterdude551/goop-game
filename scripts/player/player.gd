@@ -22,6 +22,8 @@ func _ready():
 	game = get_parent()
 
 func _physics_process(delta):
+	if game.player == null:
+		game.player = self
 	collision_shape_2d.disabled = false
 	dashing = false
 	health_bar.value = hp
@@ -46,7 +48,10 @@ func _physics_process(delta):
 		velocity *= 50
 		collision_shape_2d.disabled = true
 		for i in enemies:
+			game.enemies.erase(i);
 			i.queue_free()
+			game.population -=  1;
+			game.kills += 1;
 		dashing = true
 		if direction:
 			animated_sprite_2d.scale = Vector2(1, .2)
@@ -54,13 +59,8 @@ func _physics_process(delta):
 			animated_sprite_2d.scale = Vector2(.2, 1)
 		animated_sprite_2d.play("default")
 		
-	
-	
 	move_and_slide()
 	
-##l
-
-
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("enemy"):
 		enemies.append(body)

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbgw00ysmuwq1"]
+
+[ext_resource type="Script" uid="uid://b3a6tf5lxjfb7" path="res://scripts/enemy/EnemySpawner.gd" id="1_rnslm"]
+
+[node name="WaveManager" type="Node2D"]
+script = ExtResource("1_rnslm")
+
+[node name="Spawner" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 1149.0
+offset_bottom = 646.0
+theme_override_font_sizes/normal_font_size = 128
+text = "Wave:
+Enemies Left:"

@@ -1,19 +1,17 @@
 [gd_scene load_steps=6 format=3 uid="uid://dy57t2oexldex"]
 
-[ext_resource type="Script" path="res://scripts/enemy/goop.gd" id="1_vyjc6"]
-[ext_resource type="Texture2D" uid="uid://cq55si5ncx60r" path="res://assets/sprites/slime.png" id="2_w5t21"]
+[ext_resource type="Script" uid="uid://n66i7k5k3lnk" path="res://scripts/enemy/goop.gd" id="1_vyjc6"]
+[ext_resource type="Texture2D" uid="uid://bnrs4h3iag78p" path="res://assets/sprites/goop.png" id="2_5bjhd"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lju80"]
-region = Rect2(0, 80, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ceiyr"]
+atlas = ExtResource("2_5bjhd")
+region = Rect2(0, 0, 1024, 1024)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fsmn6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_w5t21")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lju80")
+"texture": SubResource("AtlasTexture_ceiyr")
 }],
 "loop": true,
 "name": &"default",
@@ -26,11 +24,12 @@ radius = 44.0454
 [node name="goop" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
 collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_vyjc6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -3)
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_fsmn6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
