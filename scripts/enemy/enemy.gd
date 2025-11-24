@@ -17,6 +17,7 @@ var goop_path = preload("res://scenes/goop.tscn")
 @onready var spawner = $Spawner
 
 @export var damage = 10
+@export var health = 3
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -28,6 +29,11 @@ func _ready():
 		player = players[0]
 	color = (randi() % 3) + 1
 	game = get_parent()
+
+func _process(delta):
+	if health <= 0:
+		get_parent().get_node("Practice arena").destroy_enemy(self)
+		queue_free()
 
 func _physics_process(delta):
 	if player == null:
@@ -59,6 +65,10 @@ func _on_area_2d_body_entered(body):
 		colliding = true
 		player.hp -= damage
 		attack.start()
+	
+	if body.is_in_group("bullet"):
+		health -= 1
+		body.queue_free()
 
 
 

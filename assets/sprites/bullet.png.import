@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnof1stywof4k"
-path="res://.godot/imported/janitorPLACEHOLDER.webp-31e6d2968db2793ba84cf848d7c5809c.ctex"
+uid="uid://beln6lmochh0p"
+path="res://.godot/imported/bullet.png-f46585c7ec2413c07a04c5a8ef7289a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/janitorPLACEHOLDER.webp"
-dest_files=["res://.godot/imported/janitorPLACEHOLDER.webp-31e6d2968db2793ba84cf848d7c5809c.ctex"]
+source_file="res://assets/sprites/bullet.png"
+dest_files=["res://.godot/imported/bullet.png-f46585c7ec2413c07a04c5a8ef7289a3.ctex"]
 
 [params]
 

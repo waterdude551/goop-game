@@ -44,7 +44,7 @@ func _process(delta):
 #enemies spawn in a random position in every time the Spawner timeer goess off
 func spawn_enemy():
 	enemy = enemy_path.instantiate()
-	enemy.global_position = Vector2((randi() % 560)-280,(randi() % 310)-155)
+	enemy.global_position = Vector2((randi() % 560)-280 + 2074,(randi() % 310)-155 + 1053)
 	get_parent().add_child.call_deferred(enemy)
 	enemies.append(enemy)
 	spawner.start()
@@ -56,3 +56,6 @@ func next_wave():
 	initPop += 5
 	enemiesToSpawn = initPop
 	
+func destroy_enemy(enemy):
+	enemies.erase(enemy)
+	population -= 1
