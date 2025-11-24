@@ -22,7 +22,7 @@ animations = [{
 radius = 44.0454
 
 [node name="goop" type="CharacterBody2D"]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(2, 2)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_vyjc6")

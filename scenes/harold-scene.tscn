@@ -9,6 +9,9 @@
 position = Vector2(-56, -85)
 
 [node name="Player" parent="Practice arena" instance=ExtResource("3_riu74")]
-position = Vector2(2074, 1053)
+position = Vector2(962, 875)
 
-[node name="Camera2D" type="Camera2D" parent="Practice arena/Player"]
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(2018, 968)
+offset = Vector2(-500, -50)
+zoom = Vector2(0.365, 0.32)

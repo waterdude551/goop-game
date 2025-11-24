@@ -8,7 +8,7 @@ radius = 84.8528
 
 [node name="Bullet" type="CharacterBody2D" groups=["bullet"]]
 position = Vector2(0.99999994, 0)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.3, 0.3)
 collision_layer = 2
 script = ExtResource("1_y25gk")
 
@@ -25,7 +25,6 @@ scale = Vector2(0.99999994, 0.99999994)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(10.000002, 0)
-scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("CircleShape2D_y25gk")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

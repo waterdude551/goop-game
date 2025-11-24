@@ -36,12 +36,14 @@ animations = [{
 radius = 44.0454
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u2lqy"]
-radius = 42.5
+radius = 53.76453
 
 [node name="enemy" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(2, 2)
 collision_mask = 3
 platform_floor_layers = 4294967293
 script = ExtResource("1_lgkee")
+speed = 200.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -3)
@@ -59,7 +61,7 @@ position = Vector2(0, 10)
 shape = SubResource("CircleShape2D_3mqti")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 14)
+position = Vector2(5.9604645e-08, 10.5)
 scale = Vector2(0.8, 0.8)
 shape = SubResource("CircleShape2D_u2lqy")
 

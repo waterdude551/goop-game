@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 @onready var player: Node2D = null
 @onready var game: Node2D = null
@@ -16,6 +15,7 @@ var goop_path = preload("res://scenes/goop.tscn")
 
 @onready var spawner = $Spawner
 
+@export var speed = 300.0
 @export var damage = 10
 @export var health = 3
 
@@ -94,7 +94,7 @@ func update_target_position(target_pos: Vector2):
 	nav_agent.target_position = target_pos
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):
-	velocity = velocity.move_toward(safe_velocity * SPEED, 12.0)
+	velocity = velocity.move_toward(safe_velocity * speed, 12.0)
 	move_and_slide()
 	
 func spawn_goop():

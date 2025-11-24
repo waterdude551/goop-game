@@ -26,7 +26,7 @@ glow_bloom = 0.5
 adjustment_enabled = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_im4b2"]
-radius = 45.6667
+radius = 12.440257
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xhd6u"]
 bg_color = Color(0, 0, 0, 0.784314)
@@ -35,16 +35,17 @@ bg_color = Color(0, 0, 0, 0.784314)
 bg_color = Color(0, 0.6, 0.6, 0.784314)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(1.5, 1.5)
 collision_layer = 2
 script = ExtResource("1_soynw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(21, -26)
+position = Vector2(9.050004, -11.500001)
 scale = Vector2(0.8, 0.8)
 shape = SubResource("CircleShape2D_ogc06")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-0.8, 4)
+position = Vector2(-12.749997, 18.5)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_odeq1")
 
@@ -54,15 +55,15 @@ environment = SubResource("Environment_uxfxc")
 [node name="Area2D" type="Area2D" parent="." groups=["dash"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(21, -27)
-scale = Vector2(3, 3)
+position = Vector2(9, -11.5)
+scale = Vector2(2.5, 2.5)
 shape = SubResource("CircleShape2D_im4b2")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -64.0
-offset_top = -152.0
-offset_right = 113.0
-offset_bottom = -125.0
+offset_left = -75.95
+offset_top = -137.5
+offset_right = 101.05
+offset_bottom = -110.5
 theme_override_styles/background = SubResource("StyleBoxFlat_xhd6u")
 theme_override_styles/fill = SubResource("StyleBoxFlat_4agkm")
 value = 100.0
