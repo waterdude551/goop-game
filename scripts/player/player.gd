@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 600.0
+@export var SPEED = 600
 const JUMP_VELOCITY = -400.0
 var color = 1
 @onready var animated_sprite_2d = $AnimatedSprite2D
@@ -10,6 +10,8 @@ var color = 1
 var enemies := []
 @export var hp = 100
 @onready var health_bar = $HealthBar
+@export var sweeping = false
+@export var shooting = false
 
 
 
@@ -41,7 +43,14 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
-	
+	if Input.is_action_just_pressed("ui_switch"):
+		if sweeping:
+			sweeping = false
+			shooting = true
+		elif shooting:
+			sweeping = true
+			shooting = false
+		print("switch")
 	
 	
 	if Input.is_action_just_pressed("ui_dash"):

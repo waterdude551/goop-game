@@ -1,14 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bnnmbp8wjqacc"]
+[gd_scene load_steps=3 format=3 uid="uid://btte1mnqgivl8"]
 
 [ext_resource type="PackedScene" uid="uid://m861gmgwli6d" path="res://scenes/practice_arena.tscn" id="1_tb8yp"]
 [ext_resource type="PackedScene" uid="uid://2wkd4xllpswy" path="res://scenes/player.tscn" id="3_riu74"]
 
 [node name="HaroldScene" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1579, 962)
+
 [node name="Practice arena" parent="." instance=ExtResource("1_tb8yp")]
 position = Vector2(-56, -85)
 
 [node name="Player" parent="Practice arena" instance=ExtResource("3_riu74")]
-position = Vector2(2074, 1053)
-
-[node name="Camera2D" type="Camera2D" parent="Practice arena/Player"]
+position = Vector2(1111, 877)

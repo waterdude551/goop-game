@@ -1,31 +1,38 @@
-[gd_scene load_steps=9 format=3 uid="uid://11v7a8161040"]
+[gd_scene load_steps=10 format=3 uid="uid://prtcxky1cyaf"]
 
-[ext_resource type="Script" uid="uid://ijnh6317l51j" path="res://scripts/enemy/enemy.gd" id="1_lgkee"]
-[ext_resource type="Texture2D" uid="uid://ctyfddqye0n5a" path="res://assets/sprites/New Piskel (3).png" id="2_md0e3"]
+[ext_resource type="Script" uid="uid://ijnh6317l51j" path="res://scripts/enemy/enemy.gd" id="1_6co2j"]
+[ext_resource type="Texture2D" uid="uid://cxvyd4cls4sfq" path="res://assets/sprites/slime 2.png" id="2_6co2j"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ra3w"]
-atlas = ExtResource("2_md0e3")
-region = Rect2(0, 0, 1024, 1024)
+[sub_resource type="AtlasTexture" id="AtlasTexture_xknbt"]
+atlas = ExtResource("2_6co2j")
+region = Rect2(0, 0, 84, 104)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
-atlas = ExtResource("2_md0e3")
-region = Rect2(1024, 0, 1024, 1024)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifx53"]
+atlas = ExtResource("2_6co2j")
+region = Rect2(84, 0, 84, 104)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c4w8v"]
-atlas = ExtResource("2_md0e3")
-region = Rect2(0, 1024, 1024, 1024)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q4r6"]
+atlas = ExtResource("2_6co2j")
+region = Rect2(0, 104, 84, 104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uusn6"]
+atlas = ExtResource("2_6co2j")
+region = Rect2(84, 104, 84, 104)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8xoo0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4ra3w")
+"texture": SubResource("AtlasTexture_xknbt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5uy6h")
+"texture": SubResource("AtlasTexture_ifx53")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c4w8v")
+"texture": SubResource("AtlasTexture_8q4r6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uusn6")
 }],
 "loop": true,
 "name": &"default",
@@ -41,14 +48,12 @@ radius = 42.5
 [node name="enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_mask = 3
 platform_floor_layers = 4294967293
-script = ExtResource("1_lgkee")
-SPEED = 200.0
-health = 5
-nerd = true
+script = ExtResource("1_6co2j")
+damage = 5
+green = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -3)
-scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_8xoo0")
 autoplay = "default"
 frame_progress = 0.7403771

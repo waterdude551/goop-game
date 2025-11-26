@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
+@export var SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 @onready var player: Node2D = null
 @onready var game: Node2D = null
@@ -18,8 +18,8 @@ var goop_path = preload("res://scenes/goop.tscn")
 
 @export var damage = 10
 @export var health = 3
-
-
+@export var nerd = false
+@export var green = false
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -69,6 +69,8 @@ func _on_area_2d_body_entered(body):
 	if body.is_in_group("bullet"):
 		health -= 1
 		body.queue_free()
+		if health <= 0:
+			queue_free()
 
 
 
