@@ -5,11 +5,11 @@
 
 [node name="HaroldScene" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1579, 962)
-
 [node name="Practice arena" parent="." instance=ExtResource("1_tb8yp")]
 position = Vector2(-56, -85)
 
 [node name="Player" parent="Practice arena" instance=ExtResource("3_riu74")]
 position = Vector2(1111, 877)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(4104, 3883)

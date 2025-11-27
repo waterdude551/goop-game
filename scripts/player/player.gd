@@ -10,9 +10,10 @@ var color = 1
 var enemies := []
 @export var hp = 100
 @onready var health_bar = $HealthBar
+@onready var camera_2d: Camera2D = $Camera2D
 @export var sweeping = false
 @export var shooting = false
-
+@onready var sprite_2d: Sprite2D = $PlayerAimPivot/PlayerAim/Sprite2D
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -26,10 +27,11 @@ func _ready():
 func _physics_process(delta):
 	if game.player == null:
 		game.player = self
+	
 	collision_shape_2d.disabled = false
 	dashing = false
 	health_bar.value = hp
-	animated_sprite_2d.scale = Vector2(.4, .4)
+	animated_sprite_2d.scale = Vector2(2.5, 2.5)
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var elevation = Input.get_axis("ui_up", "ui_down")
@@ -42,7 +44,17 @@ func _physics_process(delta):
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+	if velocity.x != 0 || velocity.y != 0:
+		if animated_sprite_2d.animation == "idle":
+			animated_sprite_2d.play("walking")
+
 		
+	if Input.is_action_just_pressed("ui_left"):
+		animated_sprite_2d.flip_h = false
+		sprite_2d.flip_h = false
+	if Input.is_action_just_pressed("ui_right"):
+		animated_sprite_2d.flip_h = true
+		sprite_2d.flip_h = true
 	if Input.is_action_just_pressed("ui_switch"):
 		if sweeping:
 			sweeping = false
@@ -63,9 +75,9 @@ func _physics_process(delta):
 			game.kills += 1;
 		dashing = true
 		if direction:
-			animated_sprite_2d.scale = Vector2(1, .2)
+			animated_sprite_2d.scale = Vector2(4, 1)
 		if elevation:
-			animated_sprite_2d.scale = Vector2(.2, 1)
+			animated_sprite_2d.scale = Vector2(1, 4)
 		animated_sprite_2d.play("default")
 		
 	move_and_slide()
@@ -73,9 +85,6 @@ func _physics_process(delta):
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("enemy"):
 		enemies.append(body)
-
-
-
 
 func _on_area_2d_body_exited(body):
 	if body.is_in_group("enemy"):

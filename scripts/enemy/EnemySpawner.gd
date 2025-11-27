@@ -4,6 +4,7 @@ var enemiesToSpawn = 0;
 var population = 0;
 var kills = 0;
 var initPop = 0;
+var coolingDown = true;
 @onready var enemy: Node2D = null #enemies will be spawned repeatedly
 @onready var player: Node2D = null
 @onready var game: Node2D = null
@@ -11,9 +12,9 @@ var enemy_path = preload("res://scenes/enemy.tscn")
 var green_path = preload("res://scenes/green.tscn")
 
 @onready var spawner = $Spawner
-@onready var enemyCount: RichTextLabel = $RichTextLabel
+@onready var text: RichTextLabel = $CanvasLayer/RichTextLabel
 @onready var layer_1: TileMapLayer = $TileMapLayer
-
+@onready var timer: Timer = $Timer
 
 
 var tileSetNumber = 1
@@ -32,9 +33,11 @@ func _ready():
 
 
 func _process(delta):
-	enemyCount.text = "Wave: "  + str(wave) + "\n" + "Enemies Left: " + str(population) + "\n" + "Enemies Killed: " + str(kills)
-	if enemiesToSpawn <= 0 and population <= 0:
-		next_wave()
+	text.text = "Wave: "  + str(wave) + "\n" + "Enemies Left: " + str(population) + "\n" + "Enemies Killed: " + str(kills)
+	if enemiesToSpawn <= 0 and population <= 0 and !coolingDown:
+		coolingDown = true
+		timer.start()
+		
 	if enemiesToSpawn > 0 and spawner.is_stopped():
 		spawn_enemy() #each wave has a certain number of enemies to spawn
 	for i in enemies:
@@ -77,8 +80,13 @@ func next_wave():
 	wave += 1
 	initPop += 5
 	enemiesToSpawn = initPop
+	coolingDown = false
 	
 func destroy_enemy(enemy):
 	enemies.erase(enemy)
 	population -= 1
 	kills += 1
+	
+
+func _on_timer_timeout() -> void:
+	next_wave()
