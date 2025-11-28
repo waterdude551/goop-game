@@ -14,6 +14,7 @@ var enemies := []
 @export var sweeping = false
 @export var shooting = false
 @onready var sprite_2d: Sprite2D = $PlayerAimPivot/PlayerAim/Sprite2D
+@onready var aim_pivot: Node2D = $PlayerAimPivot
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -47,14 +48,15 @@ func _physics_process(delta):
 	if velocity.x != 0 || velocity.y != 0:
 		if animated_sprite_2d.animation == "idle":
 			animated_sprite_2d.play("walking")
-
-		
+			
 	if Input.is_action_just_pressed("ui_left"):
 		animated_sprite_2d.flip_h = false
-		sprite_2d.flip_h = false
+		sprite_2d.flip_v = false
+		aim_pivot.position.x = 32
 	if Input.is_action_just_pressed("ui_right"):
 		animated_sprite_2d.flip_h = true
-		sprite_2d.flip_h = true
+		#sprite_2d.flip_v = true
+		aim_pivot.position.x = 12
 	if Input.is_action_just_pressed("ui_switch"):
 		if sweeping:
 			sweeping = false

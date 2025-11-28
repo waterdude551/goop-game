@@ -120,10 +120,10 @@ position = Vector2(32, -26)
 script = ExtResource("3_dqkch")
 
 [node name="PlayerAim" type="Node2D" parent="PlayerAimPivot"]
-position = Vector2(-2, 25)
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerAimPivot/PlayerAim"]
-position = Vector2(-10, -11)
+position = Vector2(16, 13)
+rotation = -1.5707964
 scale = Vector2(2, 2)
 texture = ExtResource("4_dqkch")
 

@@ -15,6 +15,7 @@ var green_path = preload("res://scenes/green.tscn")
 @onready var text: RichTextLabel = $CanvasLayer/RichTextLabel
 @onready var layer_1: TileMapLayer = $TileMapLayer
 @onready var timer: Timer = $Timer
+@onready var store: Panel = $CanvasLayer/store
 
 
 var tileSetNumber = 1

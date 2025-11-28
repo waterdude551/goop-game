@@ -290,6 +290,54 @@ theme_override_font_sizes/normal_font_size = 32
 text = "Wave:
 Enemies Left:"
 
+[node name="store" type="Panel" parent="CanvasLayer"]
+visible = false
+offset_left = 420.0
+offset_top = 104.0
+offset_right = 874.0
+offset_bottom = 551.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/store"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 36.0
+offset_right = 387.0
+offset_bottom = 82.0
+theme_override_font_sizes/normal_font_size = 32
+text = "Make Your Selection"
+
+[node name="Button" type="Button" parent="CanvasLayer/store"]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 202.0
+offset_right = 381.0
+offset_bottom = 240.0
+text = "Protein Bar(10)"
+
+[node name="Button2" type="Button" parent="CanvasLayer/store"]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 254.0
+offset_right = 381.0
+offset_bottom = 292.0
+text = "Energy Drink(20)"
+
+[node name="Button3" type="Button" parent="CanvasLayer/store"]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 308.0
+offset_right = 381.0
+offset_bottom = 346.0
+text = "Pistol(50)"
+
+[node name="Button4" type="Button" parent="CanvasLayer/store"]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 358.0
+offset_right = 381.0
+offset_bottom = 396.0
+text = "Shot Gun(100)"
+
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(4159, 3864)
 
