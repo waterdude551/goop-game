@@ -342,3 +342,7 @@ text = "Shot Gun(100)"
 position = Vector2(4159, 3864)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/store/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/store/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/store/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="CanvasLayer/store/Button4" to="." method="_on_button_4_pressed"]

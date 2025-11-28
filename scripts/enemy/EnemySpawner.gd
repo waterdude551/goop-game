@@ -34,7 +34,7 @@ func _ready():
 
 
 func _process(delta):
-	text.text = "Wave: "  + str(wave) + "\n" + "Enemies Left: " + str(population) + "\n" + "Enemies Killed: " + str(kills)
+	text.text = "Wave: "  + str(wave) + "\n" + "Enemies Left: " + str(population) + "\n" + "Enemies Killed: " + str(kills) + "\n" + "Money: " + str(player.money)
 	if enemiesToSpawn <= 0 and population <= 0 and !coolingDown:
 		coolingDown = true
 		timer.start()
@@ -85,9 +85,34 @@ func next_wave():
 	
 func destroy_enemy(enemy):
 	enemies.erase(enemy)
+	player.money += 1
 	population -= 1
 	kills += 1
 	
 
 func _on_timer_timeout() -> void:
 	next_wave()
+
+func _on_button_pressed() -> void:
+	if player.money >= 10:
+		player.money -= 10
+		if player.hp <= 90:
+			player.hp += 10
+		else:
+			player.hp = 100
+	print(str(player.money))
+
+func _on_button_2_pressed() -> void:
+	if player.money >= 20:
+		player.money -= 20
+		player.boosts += 1
+
+func _on_button_3_pressed() -> void:
+	if player.money >= 50 and !("pistol" in player.weapons):
+		player.money -= 50
+		player.weapons.append("pistol")
+
+func _on_button_4_pressed() -> void:
+	if player.money >= 100 and !("shotgun" in player.weapons):
+		player.money -= 100
+		player.weapons.append("shotgun")

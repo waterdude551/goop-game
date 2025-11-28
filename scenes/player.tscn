@@ -82,6 +82,7 @@ bg_color = Color(0, 0.6, 0.6, 0.784314)
 collision_layer = 2
 script = ExtResource("1_soynw")
 sweeping = true
+money = 500
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(21, -26)

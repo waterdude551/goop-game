@@ -8,18 +8,24 @@ var color = 1
 @onready var game: Node2D = null
 @onready var collision_shape_2d = $CollisionShape2D
 var enemies := []
+var weapons := []
 @export var hp = 100
 @onready var health_bar = $HealthBar
 @onready var camera_2d: Camera2D = $Camera2D
 @export var sweeping = false
 @export var shooting = false
+@export var pistol = false
+@export var shotgun = false
+
+@export var money = 0
 @onready var sprite_2d: Sprite2D = $PlayerAimPivot/PlayerAim/Sprite2D
 @onready var aim_pivot: Node2D = $PlayerAimPivot
 
+var weaponIndex = 0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var boosts = 0
+var boosts = 5
 var dashing := false
 
 func _ready():
@@ -67,7 +73,8 @@ func _physics_process(delta):
 		print("switch")
 	
 	
-	if Input.is_action_just_pressed("ui_dash"):
+	if Input.is_action_just_pressed("ui_dash") and boosts > 0:
+		boosts -= 1
 		velocity *= 50
 		collision_shape_2d.disabled = true
 		for i in enemies:

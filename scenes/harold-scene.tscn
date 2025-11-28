@@ -10,7 +10,7 @@
 position = Vector2(-56, -85)
 
 [node name="store" parent="Practice arena" instance=ExtResource("2_mddor")]
-position = Vector2(675, 862)
+position = Vector2(691, 862)
 
 [node name="Player" parent="Practice arena" instance=ExtResource("3_riu74")]
 position = Vector2(1111, 877)
