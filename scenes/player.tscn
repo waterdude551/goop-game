@@ -1,9 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://2wkd4xllpswy"]
+[gd_scene load_steps=23 format=3 uid="uid://2wkd4xllpswy"]
 
 [ext_resource type="Script" uid="uid://ch0kk1vunod1y" path="res://scripts/player/player.gd" id="1_soynw"]
 [ext_resource type="Texture2D" uid="uid://bxlt1pw6clxas" path="res://assets/sprites/janitor.png" id="2_dqkch"]
 [ext_resource type="Script" uid="uid://c0q7oveskhcf5" path="res://scripts/player/player_aim_rotate.gd" id="3_dqkch"]
 [ext_resource type="Texture2D" uid="uid://barpju8jr6l26" path="res://assets/sprites/janitor_arm.png" id="4_dqkch"]
+[ext_resource type="Texture2D" uid="uid://b3a4486573826" path="res://assets/sprites/pistol.png" id="5_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://4adldayiwnp7" path="res://assets/sprites/shotgun.png" id="6_fjrip"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ogc06"]
 radius = 60.013012
@@ -78,6 +80,45 @@ bg_color = Color(0, 0, 0, 0.784314)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4agkm"]
 bg_color = Color(0, 0.6, 0.6, 0.784314)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
+atlas = ExtResource("4_dqkch")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
+atlas = ExtResource("5_tuyoq")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
+atlas = ExtResource("6_fjrip")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qlg0r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqkch")
+}],
+"loop": true,
+"name": &"arm",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2wvv")
+}],
+"loop": true,
+"name": &"pistol",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v2ag")
+}],
+"loop": true,
+"name": &"shotgun",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_soynw")
@@ -122,11 +163,13 @@ script = ExtResource("3_dqkch")
 
 [node name="PlayerAim" type="Node2D" parent="PlayerAimPivot"]
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerAimPivot/PlayerAim"]
+[node name="arm" type="AnimatedSprite2D" parent="PlayerAimPivot/PlayerAim"]
 position = Vector2(16, 13)
 rotation = -1.5707964
 scale = Vector2(2, 2)
-texture = ExtResource("4_dqkch")
+sprite_frames = SubResource("SpriteFrames_qlg0r")
+animation = &"shotgun"
+autoplay = "arm"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)

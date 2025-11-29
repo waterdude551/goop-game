@@ -34,7 +34,10 @@ func _ready():
 
 
 func _process(delta):
-	text.text = "Wave: "  + str(wave) + "\n" + "Enemies Left: " + str(population) + "\n" + "Enemies Killed: " + str(kills) + "\n" + "Money: " + str(player.money)
+	var mode = "cleaning"
+	if player.shooting:
+		mode = "shooting"
+	text.text = "Wave: "  + str(wave) + "\n" + "Enemies Left: " + str(population) + "\n" + "Enemies Killed: " + str(kills) + "\n" + "Money: " + str(player.money) + "\n" + "Energy: " + str(player.boosts) + "\n" + "Mode: " + mode
 	if enemiesToSpawn <= 0 and population <= 0 and !coolingDown:
 		coolingDown = true
 		timer.start()

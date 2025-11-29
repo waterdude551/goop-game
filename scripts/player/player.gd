@@ -8,7 +8,7 @@ var color = 1
 @onready var game: Node2D = null
 @onready var collision_shape_2d = $CollisionShape2D
 var enemies := []
-var weapons := []
+var weapons := ["arm"]
 @export var hp = 100
 @onready var health_bar = $HealthBar
 @onready var camera_2d: Camera2D = $Camera2D
@@ -18,7 +18,8 @@ var weapons := []
 @export var shotgun = false
 
 @export var money = 0
-@onready var sprite_2d: Sprite2D = $PlayerAimPivot/PlayerAim/Sprite2D
+#@onready var sprite_2d: Sprite2D = $PlayerAimPivot/PlayerAim/Sprite2D
+@onready var arm: AnimatedSprite2D = $PlayerAimPivot/PlayerAim/arm
 @onready var aim_pivot: Node2D = $PlayerAimPivot
 
 var weaponIndex = 0
@@ -54,14 +55,20 @@ func _physics_process(delta):
 	if velocity.x != 0 || velocity.y != 0:
 		if animated_sprite_2d.animation == "idle":
 			animated_sprite_2d.play("walking")
-			
+	if velocity.x == 0 and velocity.y == 0:
+		animated_sprite_2d.play("idle")
+	if sweeping:
+		arm.play("arm")
+	if shooting and weapons[weaponIndex] != null:
+		arm.play(weapons[weaponIndex])
+	
 	if Input.is_action_just_pressed("ui_left"):
 		animated_sprite_2d.flip_h = false
-		sprite_2d.flip_v = false
+		arm.flip_v = false
 		aim_pivot.position.x = 32
 	if Input.is_action_just_pressed("ui_right"):
 		animated_sprite_2d.flip_h = true
-		#sprite_2d.flip_v = true
+		#arm.flip_v = 
 		aim_pivot.position.x = 12
 	if Input.is_action_just_pressed("ui_switch"):
 		if sweeping:

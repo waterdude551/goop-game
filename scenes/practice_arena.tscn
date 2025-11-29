@@ -282,10 +282,10 @@ autostart = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
-offset_left = 54.0
-offset_top = 64.0
-offset_right = 1203.0
-offset_bottom = 710.0
+offset_left = 26.0
+offset_top = 16.0
+offset_right = 1175.0
+offset_bottom = 662.0
 theme_override_font_sizes/normal_font_size = 32
 text = "Wave:
 Enemies Left:"
