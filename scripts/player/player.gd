@@ -53,10 +53,9 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	if velocity.x != 0 || velocity.y != 0:
-		if animated_sprite_2d.animation == "idle":
+		if animated_sprite_2d.animation == "idle" and !dashing:
 			animated_sprite_2d.play("walking")
-	if velocity.x == 0 and velocity.y == 0:
-		animated_sprite_2d.play("idle")
+	
 	if sweeping:
 		arm.play("arm")
 	if shooting and weapons[weaponIndex] != null:
@@ -81,6 +80,7 @@ func _physics_process(delta):
 	
 	
 	if Input.is_action_just_pressed("ui_dash") and boosts > 0:
+		animated_sprite_2d.play("spin")
 		boosts -= 1
 		velocity *= 50
 		collision_shape_2d.disabled = true
@@ -94,8 +94,12 @@ func _physics_process(delta):
 			animated_sprite_2d.scale = Vector2(4, 1)
 		if elevation:
 			animated_sprite_2d.scale = Vector2(1, 4)
-		animated_sprite_2d.play("default")
-		
+	if velocity.x == 0 and velocity.y == 0:
+		if dashing:
+			animated_sprite_2d.play("spin")
+			print("ahhhh")
+		elif !animated_sprite_2d.is_playing() || animated_sprite_2d.animation == "walking" :
+			animated_sprite_2d.play("idle")
 	move_and_slide()
 	
 func _on_area_2d_body_entered(body):
