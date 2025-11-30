@@ -18,10 +18,10 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if  body.is_in_group("player"):
-		game.store.show()
+		game.store.show() # store appears when player gets near
 		print("store")
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if  body.is_in_group("player"):
-		game.store.hide()
+		game.store.hide() 

@@ -16,13 +16,14 @@ var green_path = preload("res://scenes/green.tscn")
 @onready var layer_1: TileMapLayer = $TileMapLayer
 @onready var timer: Timer = $Timer
 @onready var store: Panel = $CanvasLayer/store
+@onready var canvas_modulate: CanvasModulate = $CanvasModulate
 
 
 var tileSetNumber = 1
 var greenTile = Vector2i(17,15)
 var yellowTile = Vector2i(18,15)
 var cleanTile = Vector2i(15,15)
-
+var defaultColor = null
 var enemies := []
 
 # Called when the node enters the scene tree for the first time.
@@ -30,6 +31,8 @@ func _ready():
 	population = 0
 	wave = 0
 	enemiesToSpawn = 0
+	defaultColor = canvas_modulate.color #saves the default color value
+	canvas_modulate.color = Color("white")
 
 
 
@@ -41,6 +44,7 @@ func _process(delta):
 	if enemiesToSpawn <= 0 and population <= 0 and !coolingDown:
 		coolingDown = true
 		timer.start()
+		canvas_modulate.color = Color("white")
 		
 	if enemiesToSpawn > 0 and spawner.is_stopped():
 		spawn_enemy() #each wave has a certain number of enemies to spawn
@@ -50,13 +54,12 @@ func _process(delta):
 			if i.green:
 				layer_1.set_cell(tilePosition, tileSetNumber, greenTile) #monster ruins the tiles
 			if i.nerd:
-				layer_1.set_cell(tilePosition, tileSetNumber, yellowTile)
+				layer_1.set_cell(tilePosition, tileSetNumber, yellowTile) #slow tiles
 		else:
 			destroy_enemy(i)
 	if player != null:
 		var player_pos = layer_1.local_to_map(player.global_position)
-		var tile_coords = layer_1.get_cell_atlas_coords(player_pos)
-		#var tile_id = layer_1.get_cell(tile_coords.x, tile_coords.y)
+		var tile_coords = layer_1.get_cell_atlas_coords(player_pos) #finds the types of tiles the player is on
 		if (tile_coords == yellowTile) && !player.sweeping:
 			player.SPEED = 100
 		else:
@@ -95,8 +98,9 @@ func destroy_enemy(enemy):
 
 func _on_timer_timeout() -> void:
 	next_wave()
+	canvas_modulate.color = defaultColor # lights turn red when wave begins
 
-func _on_button_pressed() -> void:
+func _on_button_pressed() -> void: #purchase heals
 	if player.money >= 10:
 		player.money -= 10
 		if player.hp <= 90:
@@ -105,7 +109,7 @@ func _on_button_pressed() -> void:
 			player.hp = 100
 	print(str(player.money))
 
-func _on_button_2_pressed() -> void:
+func _on_button_2_pressed() -> void: #purchase energy
 	if player.money >= 20:
 		player.money -= 20
 		player.boosts += 1

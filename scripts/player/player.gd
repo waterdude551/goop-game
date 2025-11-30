@@ -18,7 +18,6 @@ var weapons := ["arm"]
 @export var shotgun = false
 
 @export var money = 0
-#@onready var sprite_2d: Sprite2D = $PlayerAimPivot/PlayerAim/Sprite2D
 @onready var arm: AnimatedSprite2D = $PlayerAimPivot/PlayerAim/arm
 @onready var aim_pivot: Node2D = $PlayerAimPivot
 
@@ -52,24 +51,24 @@ func _physics_process(delta):
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-	if velocity.x != 0 || velocity.y != 0:
+	if velocity.x != 0 || velocity.y != 0: #walking animation
 		if animated_sprite_2d.animation == "idle" and !dashing:
 			animated_sprite_2d.play("walking")
 	
 	if sweeping:
 		arm.play("arm")
-	if shooting and weapons[weaponIndex] != null:
+	if shooting and weapons[weaponIndex] != null: #equips pistol or shotgun
 		arm.play(weapons[weaponIndex])
 	
 	if Input.is_action_just_pressed("ui_left"):
 		animated_sprite_2d.flip_h = false
 		arm.flip_v = false
 		aim_pivot.position.x = 32
-	if Input.is_action_just_pressed("ui_right"):
+	if Input.is_action_just_pressed("ui_right"): #makes the player face right
 		animated_sprite_2d.flip_h = true
 		#arm.flip_v = 
 		aim_pivot.position.x = 12
-	if Input.is_action_just_pressed("ui_switch"):
+	if Input.is_action_just_pressed("ui_switch"): #toggles between shooting and sweeping
 		if sweeping:
 			sweeping = false
 			shooting = true

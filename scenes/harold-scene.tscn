@@ -17,3 +17,12 @@ position = Vector2(1111, 877)
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(4104, 3883)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_left = -85.0
+offset_top = -124.0
+offset_right = 4201.0
+offset_bottom = 3922.0

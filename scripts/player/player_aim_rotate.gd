@@ -13,10 +13,10 @@ func _process(delta: float) -> void:
 		if player.weapons[player.weaponIndex] == "pistol":
 			makeBullet(0)
 		if player.weapons[player.weaponIndex] == "shotgun":
-			makeBullet(0)
-			makeBullet(0.25)
+			makeBullet(0) 
+			makeBullet(0.25) #shotgun spread
 			makeBullet(-0.25)
-	if Input.is_action_just_pressed("ui_equip") and len(player.weapons)>0:
+	if Input.is_action_just_pressed("ui_equip") and len(player.weapons)>0: #scroll through weapons
 		player.weaponIndex = (player.weaponIndex + 1) % len(player.weapons)
 
 func makeBullet(rot):
