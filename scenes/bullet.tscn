@@ -20,6 +20,7 @@ texture = ExtResource("1_mkf8s")
 position = Vector2(9.999985, -1.5258789e-05)
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("CircleShape2D_y25gk")
+one_way_collision = true
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(0.99999994, 0.99999994)
