@@ -99,7 +99,7 @@ func next_wave():
 	
 func destroy_enemy(enemy):
 	enemies.erase(enemy)
-	player.money += 1
+	player.money += 5
 	population -= 1
 	kills += 1
 	
@@ -108,19 +108,20 @@ func _on_timer_timeout() -> void:
 	next_wave()
 	canvas_modulate.color = defaultColor # lights turn red when wave begins
 
-func _on_button_pressed() -> void: #purchase heals
+func _on_button_pressed() -> void: #purchase energy
 	if player.money >= 10:
 		player.money -= 10
-		if player.hp <= 90:
-			player.hp += 10
-		else:
-			player.hp = 100
-	print(str(player.money))
+		player.boosts += 1
+	
 
 func _on_button_2_pressed() -> void: #purchase energy
 	if player.money >= 20:
 		player.money -= 20
-		player.boosts += 1
+		if player.hp <= 80:
+			player.hp += 20
+		else:
+			player.hp = 100
+	print(str(player.money))
 
 func _on_button_3_pressed() -> void:
 	if player.money >= 50 and !("pistol" in player.weapons):

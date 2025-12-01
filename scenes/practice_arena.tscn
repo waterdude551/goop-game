@@ -279,7 +279,7 @@ wait_time = 5.0
 one_shot = true
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 30.0
 one_shot = true
 autostart = true
 
@@ -316,7 +316,7 @@ offset_left = 99.0
 offset_top = 202.0
 offset_right = 381.0
 offset_bottom = 240.0
-text = "Protein Bar(10)"
+text = "Energy Drink(10)"
 
 [node name="Button2" type="Button" parent="CanvasLayer/store"]
 layout_mode = 0
@@ -324,7 +324,7 @@ offset_left = 99.0
 offset_top = 254.0
 offset_right = 381.0
 offset_bottom = 292.0
-text = "Energy Drink(20)"
+text = "Protein Bar(20)"
 
 [node name="Button3" type="Button" parent="CanvasLayer/store"]
 layout_mode = 0

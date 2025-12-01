@@ -16,6 +16,7 @@ var weapons := ["arm"]
 @export var shooting = false
 @export var pistol = false
 @export var shotgun = false
+@onready var energy: Timer = $energy
 
 
 @export var money = 0
@@ -26,7 +27,7 @@ var weaponIndex = 0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var boosts = 5
+var boosts = 10
 var dashing := false
 
 func _ready():
@@ -82,6 +83,7 @@ func _physics_process(delta):
 	
 	
 	if Input.is_action_just_pressed("ui_dash") and boosts > 0:
+		energy.start()
 		animated_sprite_2d.play("spin")
 		boosts -= 1
 		velocity *= 50
@@ -90,14 +92,13 @@ func _physics_process(delta):
 			if i.raidboss:
 				i.health -= 1
 				if i.health <= 0:
+					game.enemies.erase(i)
 					i.queue_free()
-					game.population -=  1
-					game.kills += 1
+					game.destroy_enemy(i)
 			else:
 				game.enemies.erase(i)
 				i.queue_free()
-				game.population -=  1
-				game.kills += 1
+				game.destroy_enemy(i)
 		dashing = true
 		if direction:
 			animated_sprite_2d.scale = Vector2(4, 1)
@@ -117,3 +118,9 @@ func _on_area_2d_body_entered(body):
 func _on_area_2d_body_exited(body):
 	if body.is_in_group("enemy"):
 		enemies.erase(body)
+
+
+func _on_energy_timeout() -> void:
+	if boosts < 10:
+		boosts += 1
+		energy.start()
