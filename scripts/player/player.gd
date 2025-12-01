@@ -19,7 +19,7 @@ var weapons := ["arm"]
 @onready var energy: Timer = $energy
 
 
-@export var money = 0
+@export var money = 50
 @onready var arm: AnimatedSprite2D = $PlayerAimPivot/PlayerAim/arm
 @onready var aim_pivot: Node2D = $PlayerAimPivot
 
