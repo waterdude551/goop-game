@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://2wkd4xllpswy"]
+[gd_scene load_steps=34 format=3 uid="uid://2wkd4xllpswy"]
 
 [ext_resource type="Script" uid="uid://ch0kk1vunod1y" path="res://scripts/player/player.gd" id="1_soynw"]
 [ext_resource type="Texture2D" uid="uid://bxlt1pw6clxas" path="res://assets/sprites/janitor.png" id="2_dqkch"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://barpju8jr6l26" path="res://assets/sprites/janitor_arm.png" id="4_dqkch"]
 [ext_resource type="Texture2D" uid="uid://b3a4486573826" path="res://assets/sprites/pistol.png" id="5_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://4adldayiwnp7" path="res://assets/sprites/shotgun.png" id="6_fjrip"]
+[ext_resource type="AudioStream" uid="uid://bhv0nk70o63wv" path="res://assets/sounds/Prunus Productions Gun Sound Pack OGG Files/AK 47.ogg" id="8_ur7pv"]
+[ext_resource type="AudioStream" uid="uid://cjhqvp77skk32" path="res://assets/sounds/Prunus Productions Gun Sound Pack OGG Files/Uzi.ogg" id="9_y4r1p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ogc06"]
 radius = 60.013012
@@ -238,6 +240,12 @@ limit_left = -56
 limit_top = -85
 limit_right = 4104
 limit_bottom = 3883
+
+[node name="pistol_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_ur7pv")
+
+[node name="shotgun_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_y4r1p")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

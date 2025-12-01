@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c8m1dnrydvwx0"
+path="res://.godot/imported/Tommy gun 15 rounds auto.ogg-c0bd0f690fb4c22c4ee4e3910358fc0d.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/Prunus Productions Gun Sound Pack OGG Files/Tommy gun 15 rounds auto.ogg"
+dest_files=["res://.godot/imported/Tommy gun 15 rounds auto.ogg-c0bd0f690fb4c22c4ee4e3910358fc0d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

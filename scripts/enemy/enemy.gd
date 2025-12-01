@@ -20,6 +20,7 @@ var goop_path = preload("res://scenes/goop.tscn")
 @export var health = 3
 @export var nerd = false
 @export var green = false
+@export var raidboss = false
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -38,8 +39,19 @@ func _process(delta):
 func _physics_process(delta):
 	if player == null:
 		_ready()
-	if spawner.is_stopped():
-		spawn_goop()
+	if spawner.is_stopped() and raidboss:
+		spawner.start()
+		game.enemiesToSpawn += 1;
+		if randi_range(0,100) < 50:
+			game.spawn_enemy(game.nerd_path)
+			green = false
+			nerd = true
+		else:
+			game.spawn_enemy(game.green_path)
+			green = true
+			nerd = false
+		#game.enemiesToSpawn += 1;
+		#game.spawn_enemy()
 	# Add the gravity.
 	#if not is_on_floor():
 		#velocity.y += gravity * delta
@@ -80,17 +92,6 @@ func _on_area_2d_body_exited(body):
 		attack.stop()
 		colliding = false
 	
-
-
-func _on_area_2d_area_entered(area):
-	if area.is_in_group("dash"):
-		canPop = true
-		print("in range")
-
-
-func _on_area_2d_area_exited(area):
-	if area.is_in_group("dash"):
-		canPop = false
 
 func update_target_position(target_pos: Vector2):
 	nav_agent.target_position = target_pos

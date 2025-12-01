@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dr1ctnbprjgkh"
+path="res://.godot/imported/AK 47 3 round burst.ogg-6ff16346dcaac68cf1fed3884c419b1b.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/Prunus Productions Gun Sound Pack OGG Files/AK 47 3 round burst.ogg"
+dest_files=["res://.godot/imported/AK 47 3 round burst.ogg-6ff16346dcaac68cf1fed3884c419b1b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

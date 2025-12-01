@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bhv0nk70o63wv"
+path="res://.godot/imported/AK 47.ogg-625577f1fa2df3b27cbae3554952c372.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/Prunus Productions Gun Sound Pack OGG Files/AK 47.ogg"
+dest_files=["res://.godot/imported/AK 47.ogg-625577f1fa2df3b27cbae3554952c372.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cmrdiexn1qk8b"
+path="res://.godot/imported/Tommy gun 3 round burst.ogg-3d57a8080032ab89fa3440b06b6a0ae2.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/Prunus Productions Gun Sound Pack OGG Files/Tommy gun 3 round burst.ogg"
+dest_files=["res://.godot/imported/Tommy gun 3 round burst.ogg-3d57a8080032ab89fa3440b06b6a0ae2.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dl12071nmmnni"
+path="res://.godot/imported/Uzi alt..ogg-864f3bb3e38b0c75f91b16b8718964a6.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/Prunus Productions Gun Sound Pack OGG Files/Extras/Uzi alt..ogg"
+dest_files=["res://.godot/imported/Uzi alt..ogg-864f3bb3e38b0c75f91b16b8718964a6.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

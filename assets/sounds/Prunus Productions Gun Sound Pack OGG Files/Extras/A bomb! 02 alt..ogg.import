@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d1gvvdwt1vf8y"
+path="res://.godot/imported/A bomb! 02 alt..ogg-ae6067e001411b46570fb246e7f20b25.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/Prunus Productions Gun Sound Pack OGG Files/Extras/A bomb! 02 alt..ogg"
+dest_files=["res://.godot/imported/A bomb! 02 alt..ogg-ae6067e001411b46570fb246e7f20b25.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

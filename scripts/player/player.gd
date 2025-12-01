@@ -17,6 +17,7 @@ var weapons := ["arm"]
 @export var pistol = false
 @export var shotgun = false
 
+
 @export var money = 0
 @onready var arm: AnimatedSprite2D = $PlayerAimPivot/PlayerAim/arm
 @onready var aim_pivot: Node2D = $PlayerAimPivot
@@ -76,6 +77,8 @@ func _physics_process(delta):
 			sweeping = true
 			shooting = false
 		print("switch")
+	if hp <= 0:
+		get_tree().reload_current_scene()
 	
 	
 	if Input.is_action_just_pressed("ui_dash") and boosts > 0:
@@ -84,10 +87,17 @@ func _physics_process(delta):
 		velocity *= 50
 		collision_shape_2d.disabled = true
 		for i in enemies:
-			game.enemies.erase(i);
-			i.queue_free()
-			game.population -=  1;
-			game.kills += 1;
+			if i.raidboss:
+				i.health -= 1
+				if i.health <= 0:
+					i.queue_free()
+					game.population -=  1
+					game.kills += 1
+			else:
+				game.enemies.erase(i)
+				i.queue_free()
+				game.population -=  1
+				game.kills += 1
 		dashing = true
 		if direction:
 			animated_sprite_2d.scale = Vector2(4, 1)
@@ -96,7 +106,6 @@ func _physics_process(delta):
 	if velocity.x == 0 and velocity.y == 0:
 		if dashing:
 			animated_sprite_2d.play("spin")
-			print("ahhhh")
 		elif !animated_sprite_2d.is_playing() || animated_sprite_2d.animation == "walking" :
 			animated_sprite_2d.play("idle")
 	move_and_slide()

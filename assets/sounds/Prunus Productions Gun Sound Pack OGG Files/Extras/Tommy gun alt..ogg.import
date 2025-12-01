@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bqo4i5fke38w2"
+path="res://.godot/imported/Tommy gun alt..ogg-2812922cb8f369506d57211c5f45cafd.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/Prunus Productions Gun Sound Pack OGG Files/Extras/Tommy gun alt..ogg"
+dest_files=["res://.godot/imported/Tommy gun alt..ogg-2812922cb8f369506d57211c5f45cafd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

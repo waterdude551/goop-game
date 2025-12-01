@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cmcch6yxcqfb4"
+path="res://.godot/imported/Uzi 15 rounds auto.ogg-087926d7db39d2ab16b08b79a3f64b42.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/Prunus Productions Gun Sound Pack OGG Files/Uzi 15 rounds auto.ogg"
+dest_files=["res://.godot/imported/Uzi 15 rounds auto.ogg-087926d7db39d2ab16b08b79a3f64b42.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

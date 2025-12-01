@@ -8,8 +8,9 @@ var coolingDown = true;
 @onready var enemy: Node2D = null #enemies will be spawned repeatedly
 @onready var player: Node2D = null
 @onready var game: Node2D = null
-var enemy_path = preload("res://scenes/enemy.tscn")
+var nerd_path = preload("res://scenes/enemy.tscn")
 var green_path = preload("res://scenes/green.tscn")
+var boss_path = preload("res://scenes/raidboss.tscn")
 
 @onready var spawner = $Spawner
 @onready var text: RichTextLabel = $CanvasLayer/RichTextLabel
@@ -17,6 +18,7 @@ var green_path = preload("res://scenes/green.tscn")
 @onready var timer: Timer = $Timer
 @onready var store: Panel = $CanvasLayer/store
 @onready var canvas_modulate: CanvasModulate = $CanvasModulate
+@onready var audio: AudioStreamPlayer = $AudioStreamPlayer
 
 
 var tileSetNumber = 1
@@ -43,11 +45,15 @@ func _process(delta):
 	text.text = "Wave: "  + str(wave) + "\n" + "Enemies Left: " + str(population) + "\n" + "Enemies Killed: " + str(kills) + "\n" + "Money: " + str(player.money) + "\n" + "Energy: " + str(player.boosts) + "\n" + "Mode: " + mode
 	if enemiesToSpawn <= 0 and population <= 0 and !coolingDown:
 		coolingDown = true
+		audio.stop()
 		timer.start()
 		canvas_modulate.color = Color("white")
 		
 	if enemiesToSpawn > 0 and spawner.is_stopped():
-		spawn_enemy() #each wave has a certain number of enemies to spawn
+		if randi_range(0,100) < 50:
+			spawn_enemy(green_path) #each wave has a certain number of enemies to spawn
+		else:
+			spawn_enemy(nerd_path) #each wave has a certain number of enemies to spawn
 	for i in enemies:
 		if i != null:
 			var tilePosition = layer_1.local_to_map(i.global_position - layer_1.global_position)
@@ -72,12 +78,10 @@ func _process(delta):
 	else:
 		print("player is null")
 #enemies spawn in a random position in every time the Spawner timeer goess off
-func spawn_enemy():
+func spawn_enemy(enemy_path):
 	enemy = enemy_path.instantiate()
-	if randi_range(0,100) < 50: #25% chance of spawning special enemy
-		enemy = green_path.instantiate()
 	enemy.global_position = Vector2((randi() % 560)-280 + 2074,(randi() % 310)-155 + 1053)
-	get_parent().add_child.call_deferred(enemy)
+	add_child.call_deferred(enemy)
 	enemies.append(enemy)
 	spawner.start()
 	population += 1
@@ -85,9 +89,13 @@ func spawn_enemy():
 #After every wave the next wave grows by 5
 func next_wave(): 
 	wave += 1
+	if (wave % 10) == 0 and wave > 0:
+		spawn_enemy(boss_path)
+		initPop += 1
 	initPop += 5
 	enemiesToSpawn = initPop
 	coolingDown = false
+	audio.play()
 	
 func destroy_enemy(enemy):
 	enemies.erase(enemy)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://m861gmgwli6d"]
+[gd_scene load_steps=10 format=4 uid="uid://m861gmgwli6d"]
 
 [ext_resource type="PackedScene" uid="uid://blxpyy2ynby8m" path="res://scenes/obstacle.tscn" id="1_nx4rc"]
 [ext_resource type="Script" uid="uid://b3a6tf5lxjfb7" path="res://scripts/enemy/EnemySpawner.gd" id="1_wc15r"]
 [ext_resource type="Texture2D" uid="uid://dy6wpr1250k7v" path="res://assets/tiles/lab tileset finished transparent (1).png" id="2_wc15r"]
 [ext_resource type="PackedScene" uid="uid://bhrkvdwq2qvge" path="res://scenes/point_light_2d.tscn" id="4_q8vwv"]
+[ext_resource type="AudioStream" uid="uid://co6jh4jkwepdx" path="res://assets/sounds/mp3/Shooter Synthwave 1 Loop.mp3" id="5_mh5jl"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wc15r"]
 
@@ -358,6 +359,9 @@ position = Vector2(4096, 361)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.49019608, 0.39215687, 0.39215687, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_mh5jl")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/store/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://botftkf4ekjh"
+path="res://.godot/imported/AK 47 15 rounds auto.ogg-2535de65c314fa8f55a6ad77f8bb7948.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/Prunus Productions Gun Sound Pack OGG Files/AK 47 15 rounds auto.ogg"
+dest_files=["res://.godot/imported/AK 47 15 rounds auto.ogg-2535de65c314fa8f55a6ad77f8bb7948.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

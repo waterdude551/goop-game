@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cpfwoncafql8h"
+path="res://.godot/imported/50 cal 15 rounds auto.ogg-9b074901ae3baa41e98063d1f0db5ffe.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/Prunus Productions Gun Sound Pack OGG Files/50 cal 15 rounds auto.ogg"
+dest_files=["res://.godot/imported/50 cal 15 rounds auto.ogg-9b074901ae3baa41e98063d1f0db5ffe.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

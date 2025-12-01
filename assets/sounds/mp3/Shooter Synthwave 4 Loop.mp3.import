@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://clu12s15e5w6j"
+path="res://.godot/imported/Shooter Synthwave 4 Loop.mp3-df4243c0df644adf5b8954a602998efa.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/mp3/Shooter Synthwave 4 Loop.mp3"
+dest_files=["res://.godot/imported/Shooter Synthwave 4 Loop.mp3-df4243c0df644adf5b8954a602998efa.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

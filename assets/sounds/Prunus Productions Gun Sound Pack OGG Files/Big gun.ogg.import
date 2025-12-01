@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cf52xej145074"
+path="res://.godot/imported/Big gun.ogg-82f24904f0e9502d86332cb1e4e39940.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/Prunus Productions Gun Sound Pack OGG Files/Big gun.ogg"
+dest_files=["res://.godot/imported/Big gun.ogg-82f24904f0e9502d86332cb1e4e39940.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
