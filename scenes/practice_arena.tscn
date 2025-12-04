@@ -290,7 +290,7 @@ offset_left = 26.0
 offset_top = 16.0
 offset_right = 1175.0
 offset_bottom = 662.0
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/normal_font_size = 24
 text = "Wave:
 Enemies Left:"
 
