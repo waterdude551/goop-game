@@ -294,6 +294,14 @@ theme_override_font_sizes/normal_font_size = 24
 text = "Wave:
 Enemies Left:"
 
+[node name="countdown" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 871.0
+offset_top = 16.0
+offset_right = 2020.0
+offset_bottom = 662.0
+theme_override_font_sizes/normal_font_size = 24
+text = "Next wave in:"
+
 [node name="store" type="Panel" parent="CanvasLayer"]
 visible = false
 offset_left = 420.0
@@ -342,6 +350,40 @@ offset_right = 381.0
 offset_bottom = 396.0
 text = "Shot Gun(100)"
 
+[node name="instructions" type="Panel" parent="CanvasLayer"]
+offset_left = 343.0
+offset_top = 51.0
+offset_right = 877.0
+offset_bottom = 600.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/instructions"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 36.0
+offset_right = 387.0
+offset_bottom = 82.0
+theme_override_font_sizes/normal_font_size = 32
+text = "Security Breach!"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/instructions"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 98.0
+offset_right = 464.0
+offset_bottom = 488.0
+theme_override_font_sizes/normal_font_size = 16
+text = "The lab you're in charge of cleaning has been overrun by monsters.
+
+[insert instructions]"
+
+[node name="Button" type="Button" parent="CanvasLayer/instructions"]
+layout_mode = 0
+offset_left = 185.0
+offset_top = 510.0
+offset_right = 369.0
+offset_bottom = 541.0
+text = "Play!"
+
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(4159, 3864)
 
@@ -363,8 +405,17 @@ color = Color(0.49019608, 0.39215687, 0.39215687, 1)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_mh5jl")
 
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 660.0
+offset_top = 713.0
+offset_right = 726.77325
+offset_bottom = 812.1342
+theme_override_font_sizes/normal_font_size = 64
+text = "!"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/store/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/store/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="CanvasLayer/store/Button3" to="." method="_on_button_3_pressed"]
 [connection signal="pressed" from="CanvasLayer/store/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="button_down" from="CanvasLayer/instructions/Button" to="." method="_on_button_button_down"]

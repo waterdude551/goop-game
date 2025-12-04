@@ -54,7 +54,7 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	if velocity.x != 0 || velocity.y != 0: #walking animation
-		if animated_sprite_2d.animation == "idle" and !dashing:
+		if animated_sprite_2d.animation == "idle" || !animated_sprite_2d.is_playing():
 			animated_sprite_2d.play("walking")
 	
 	if sweeping:
@@ -64,12 +64,12 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("ui_left"):
 		animated_sprite_2d.flip_h = false
-		arm.flip_v = false
-		aim_pivot.position.x = 32
+		aim_pivot.position.x = 10
+		aim_pivot.scale = Vector2(1,1)
 	if Input.is_action_just_pressed("ui_right"): #makes the player face right
 		animated_sprite_2d.flip_h = true
-		#arm.flip_v = 
-		aim_pivot.position.x = 12
+		aim_pivot.position.x = -10
+		aim_pivot.scale = Vector2(1,-1)
 	if Input.is_action_just_pressed("ui_switch"): #toggles between shooting and sweeping
 		if sweeping:
 			sweeping = false
@@ -86,7 +86,7 @@ func _physics_process(delta):
 		energy.start()
 		animated_sprite_2d.play("spin")
 		boosts -= 1
-		velocity *= 50
+		velocity *= 10
 		collision_shape_2d.disabled = true
 		for i in enemies:
 			if i.raidboss:

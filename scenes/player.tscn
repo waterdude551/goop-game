@@ -207,7 +207,7 @@ environment = SubResource("Environment_uxfxc")
 [node name="Area2D" type="Area2D" parent="." groups=["dash"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(3, 3)
+scale = Vector2(4, 4)
 shape = SubResource("CircleShape2D_im4b2")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
@@ -220,7 +220,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_4agkm")
 value = 100.0
 
 [node name="PlayerAimPivot" type="Node2D" parent="."]
-position = Vector2(11, 2)
+position = Vector2(10, 0)
 script = ExtResource("3_dqkch")
 
 [node name="PlayerAim" type="Node2D" parent="PlayerAimPivot"]
@@ -230,7 +230,7 @@ position = Vector2(16, 13)
 rotation = -1.5707964
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_qlg0r")
-animation = &"shotgun"
+animation = &"arm"
 autoplay = "arm"
 
 [node name="GunCooldown" type="Timer" parent="PlayerAimPivot"]
