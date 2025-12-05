@@ -47,10 +47,10 @@ func _process(delta):
 	var mode = "cleaning"
 	if player.shooting:
 		mode = "shooting"
-	text.text = "Wave: "  + str(wave) + "\nEnemies Left: " + str(population) + "\nEnemies Killed: " + str(kills) + "\nMoney: " + str(player.money) + "\nEnergy: " + str(player.boosts) + "\nMode: " + mode + "\nEsc for menu"
+	text.text = "Wave: "  + str(wave) + "\nMoney: " + str(player.money) + "\nEnergy: " + str(player.boosts) + "\nMode: " + mode + "\nEsc for menu"
 	countdown.text = "Next wave in: " + str(int(timer.time_left))
 	if mode == "shooting":
-		countdown.text += "\n Weapon:" + player.weapons[player.weaponIndex]
+		countdown.text += "\n Weapon: " + player.weapons[player.weaponIndex]
 	if enemiesToSpawn <= 0 and population <= 0 and !coolingDown:
 		coolingDown = true
 		audio.stop()
