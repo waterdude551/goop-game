@@ -21,6 +21,7 @@ var boss_path = preload("res://scenes/raidboss.tscn")
 @onready var audio: AudioStreamPlayer = $AudioStreamPlayer
 @onready var countdown: RichTextLabel = $CanvasLayer/countdown
 @onready var instructions: Panel = $CanvasLayer/instructions
+@onready var skip: Button = $CanvasLayer/Skip
 
 
 var tileSetNumber = 1
@@ -46,12 +47,15 @@ func _process(delta):
 	var mode = "cleaning"
 	if player.shooting:
 		mode = "shooting"
-	text.text = "Wave: "  + str(wave) + "\n" + "Enemies Left: " + str(population) + "\n" + "Enemies Killed: " + str(kills) + "\n" + "Money: " + str(player.money) + "\n" + "Energy: " + str(player.boosts) + "\n" + "Mode: " + mode  + "\n" + "Esc for menu"
+	text.text = "Wave: "  + str(wave) + "\nEnemies Left: " + str(population) + "\nEnemies Killed: " + str(kills) + "\nMoney: " + str(player.money) + "\nEnergy: " + str(player.boosts) + "\nMode: " + mode + "\nEsc for menu"
 	countdown.text = "Next wave in: " + str(int(timer.time_left))
+	if mode == "shooting":
+		countdown.text += "\n Weapon:" + player.weapons[player.weaponIndex]
 	if enemiesToSpawn <= 0 and population <= 0 and !coolingDown:
 		coolingDown = true
 		audio.stop()
 		timer.start()
+		skip.visible = true
 		canvas_modulate.color = Color("white")
 		
 	if enemiesToSpawn > 0 and spawner.is_stopped():
@@ -129,6 +133,7 @@ func destroy_enemy(enemy):
 
 func _on_timer_timeout() -> void:
 	next_wave()
+	skip.visible = false
 	canvas_modulate.color = defaultColor # lights turn red when wave begins
 
 func _on_button_pressed() -> void: #purchase energy
@@ -160,3 +165,8 @@ func _on_button_4_pressed() -> void:
 func _on_button_button_down() -> void:
 	instructions.visible = false
 	get_tree().paused = false
+
+
+func _on_skip_button_down() -> void:
+	timer.stop()
+	timer.emit_signal("timeout")

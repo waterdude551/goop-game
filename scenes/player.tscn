@@ -223,15 +223,16 @@ value = 100.0
 position = Vector2(10, 0)
 script = ExtResource("3_dqkch")
 
-[node name="PlayerAim" type="Node2D" parent="PlayerAimPivot"]
-
-[node name="arm" type="AnimatedSprite2D" parent="PlayerAimPivot/PlayerAim"]
+[node name="arm" type="AnimatedSprite2D" parent="PlayerAimPivot"]
 position = Vector2(16, 13)
 rotation = -1.5707964
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_qlg0r")
 animation = &"arm"
 autoplay = "arm"
+
+[node name="PlayerAim" type="Node2D" parent="PlayerAimPivot"]
+position = Vector2(26, -12)
 
 [node name="GunCooldown" type="Timer" parent="PlayerAimPivot"]
 wait_time = 0.25

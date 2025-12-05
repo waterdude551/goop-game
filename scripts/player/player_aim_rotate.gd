@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 func makeBullet(rot):
 	var bullet = BULLET.instantiate()
 	get_tree().root.add_child(bullet)
-	bullet.global_position = global_position
+	bullet.global_position = player.player_aim.global_position
 	bullet.rotation = rotation + rot
 
 func _on_gun_cooldown_timeout() -> void:

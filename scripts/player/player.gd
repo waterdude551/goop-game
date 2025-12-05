@@ -17,10 +17,11 @@ var weapons := ["arm"]
 @export var pistol = false
 @export var shotgun = false
 @onready var energy: Timer = $energy
+@onready var player_aim: Node2D = $PlayerAimPivot/PlayerAim
 
 
 @export var money = 50
-@onready var arm: AnimatedSprite2D = $PlayerAimPivot/PlayerAim/arm
+@onready var arm: AnimatedSprite2D = $PlayerAimPivot/arm
 @onready var aim_pivot: Node2D = $PlayerAimPivot
 
 var weaponIndex = 0
