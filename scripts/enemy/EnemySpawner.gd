@@ -6,7 +6,7 @@ var kills = 0;
 var initPop = 0;
 var coolingDown = true;
 @onready var enemy: Node2D = null #enemies will be spawned repeatedly
-@onready var player: Node2D = null
+@onready var player: Node2D = $Player
 @onready var game: Node2D = null
 var nerd_path = preload("res://scenes/enemy.tscn")
 var green_path = preload("res://scenes/green.tscn")
@@ -33,6 +33,7 @@ var enemies := []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Engine.max_fps = 60
 	instructions.process_mode = Node.PROCESS_MODE_ALWAYS
 	population = 0
 	wave = 0
